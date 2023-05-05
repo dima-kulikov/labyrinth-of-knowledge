@@ -1,4 +1,4 @@
-# lesson-1
+# labyrinth-of-knowledge
 
 ## Project setup
 ```
