@@ -1,10 +1,16 @@
 <template>
   <p>счетчик: {{ myNumber }}</p>
-  <button @click="minus" class="btn btn-minus">уменшити</button>
   <button v-on:click="plus" class="btn btn-plus">увеличити</button>
+  <button @click="minus" v-if="myNumber >= 1" class="btn btn-minus">
+    уменшити
+  </button>
   <br />
-  <input type="text" v-bind:value="sumText" v-on:input="changeInput" />
+  <input type="text" v-model="sumText" />
   <p>{{ sumText }}</p>
+  <br />
+  <div class="list" v-for="(ar, index) in myAr" :key="index">
+    {{ ar }}
+  </div>
 </template>
 
 <script>
@@ -13,6 +19,7 @@ export default {
     return {
       myNumber: 0,
       sumText: "1",
+      myAr: ["dima", "lesia", "kuma"],
     };
   },
   methods: {
@@ -21,9 +28,6 @@ export default {
     },
     minus() {
       this.myNumber += -1;
-    },
-    changeInput(e) {
-      this.sumText = e.target.value;
     },
   },
 };
@@ -38,8 +42,7 @@ export default {
   border-radius: 5px;
 }
 .btn:hover {
-  color: #1e1eb7;
-  font-weight: 700;
+  background-color: #71ebef;
 }
 .btn-minus {
   background: red;
@@ -47,4 +50,11 @@ export default {
 .btn-plus {
   background: greenyellow;
 }
+.list {
+  padding: 5px;
+  border: 1px solid red;
+  max-width: 200px;
+}
 </style>
+
+// https://www.youtube.com/watch?v=JLsbNbeCIQk&list=PLGS5TF12xmz-E7BPX63Zsv0uuV5qK_vMG&index=13
