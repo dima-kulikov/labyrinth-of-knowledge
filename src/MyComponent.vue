@@ -56,5 +56,3 @@ export default {
   max-width: 200px;
 }
 </style>
-
-// https://www.youtube.com/watch?v=JLsbNbeCIQk&list=PLGS5TF12xmz-E7BPX63Zsv0uuV5qK_vMG&index=13

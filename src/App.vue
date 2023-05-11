@@ -5,8 +5,11 @@
   <my-notes
     v-for="note in notes"
     v-bind:key="note.id"
-    v-bind:myName="note.name"
-    v-bind:myAge="note.age"
+    v-bind:task="note.task"
+    v-bind:id="note.id"
+    v-bind:isOpen="note.isOpen"
+    v-bind:taskRead="note.taskRead"
+    v-on:countTaskOpen="countTaskOpen"
   />
 </template>
 
@@ -18,27 +21,32 @@ export default {
     return {
       notes: [
         {
-          name: "Dima",
-          age: 35,
+          task: "помыть посуду",
           id: 1,
+          isOpen: false,
+          taskRead: 0,
         },
         {
-          name: "Lesia",
-          age: 28,
+          task: "убрать вещи",
           id: 2,
+          isOpen: false,
+          taskRead: 0,
         },
         {
-          name: "Kuma",
-          age: 3,
+          task: "покормить котов",
           id: 3,
-        },
-        {
-          name: "Simka",
-          age: 1,
-          id: 3,
+          isOpen: false,
+          taskRead: 0,
         },
       ],
     };
+  },
+  methods: {
+    countTaskOpen(id) {
+      console.log(id);
+      const numberTask = this.notes.find((el) => el.id === id);
+      numberTask.taskRead += 1;
+    },
   },
 
   components: {
@@ -49,3 +57,4 @@ export default {
 
 <style>
 </style>
+// https://www.youtube.com/watch?v=p0PfHuLsGa4&list=PLGS5TF12xmz-E7BPX63Zsv0uuV5qK_vMG&index=16
