@@ -11,6 +11,7 @@
     v-bind:taskRead="note.taskRead"
     v-on:countTaskOpen="countTaskOpen"
   /> -->
+
   <keep-alive>
     <BlockContentOne v-if="nameComponent === 'ONE'"> </BlockContentOne>
     <BlockContentTwo v-else-if="nameComponent === 'TWO'" />
@@ -19,12 +20,17 @@
   <button v-on:click="nameRename">ONE</button>
   <button :onclick="nameRename">TWO</button>
   <button :onclick="nameRename">THREE</button>
+  <!--  -->
+  <br />
+  <hr />
+  <formBlock />
 </template>
 
 <script>
 import BlockContentOne from "./components/BlockContentOne.vue";
 import BlockContentThree from "./components/BlockContentThree.vue";
 import BlockContentTwo from "./components/BlockContentTwo.vue";
+import formBlock from "./components/formBlock.vue";
 // import MyNotes from "./assets/MyNotes.vue";
 
 export default {
@@ -69,6 +75,7 @@ export default {
     BlockContentOne,
     BlockContentTwo,
     BlockContentThree,
+    formBlock,
   },
   provide() {
     return {
@@ -80,4 +87,4 @@ export default {
 
 <style>
 </style>
-// https://www.youtube.com/watch?v=p0PfHuLsGa4&list=PLGS5TF12xmz-E7BPX63Zsv0uuV5qK_vMG&index=16
+// https://www.youtube.com/watch?v=cmzeczmgMW4&list=PLGS5TF12xmz-E7BPX63Zsv0uuV5qK_vMG&index=29
