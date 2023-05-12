@@ -6,9 +6,11 @@
     <button :onclick="showTask" class="btn-1">Прочитать задание</button>
     <span>прочитал {{ taskRead }} раз</span>
   </div>
+  <my-third />
 </template>
 
 <script>
+import MyThird from "./MyThird.vue";
 export default {
   data() {
     return {
@@ -40,6 +42,9 @@ export default {
         this.$emit("countTaskOpen", this.id);
       }
     },
+  },
+  components: {
+    MyThird,
   },
 };
 </script>
