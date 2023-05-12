@@ -1,8 +1,8 @@
 <template>
   <h1>hello</h1>
   <!-- <my-component /> -->
-  <h2>Вивід мешканців квартири:</h2>
-  <my-notes
+  <!-- <h2>Вивід мешканців квартири:</h2> -->
+  <!-- <my-notes
     v-for="note in notes"
     v-bind:key="note.id"
     v-bind:task="note.task"
@@ -10,15 +10,27 @@
     v-bind:isOpen="note.isOpen"
     v-bind:taskRead="note.taskRead"
     v-on:countTaskOpen="countTaskOpen"
-  />
+  /> -->
+  <keep-alive>
+    <BlockContentOne v-if="nameComponent === 'ONE'"> </BlockContentOne>
+    <BlockContentTwo v-else-if="nameComponent === 'TWO'" />
+    <BlockContentThree v-else-if="nameComponent === 'THREE'" />
+  </keep-alive>
+  <button v-on:click="nameRename">ONE</button>
+  <button :onclick="nameRename">TWO</button>
+  <button :onclick="nameRename">THREE</button>
 </template>
 
 <script>
-import MyNotes from "./assets/MyNotes.vue";
+import BlockContentOne from "./components/BlockContentOne.vue";
+import BlockContentThree from "./components/BlockContentThree.vue";
+import BlockContentTwo from "./components/BlockContentTwo.vue";
+// import MyNotes from "./assets/MyNotes.vue";
 
 export default {
   data() {
     return {
+      nameComponent: "ONE",
       notes: [
         {
           task: "помыть посуду",
@@ -47,10 +59,21 @@ export default {
       const numberTask = this.notes.find((el) => el.id === id);
       numberTask.taskRead += 1;
     },
+    nameRename(e) {
+      const myTarget = e.target.innerHTML;
+      this.nameComponent = myTarget;
+    },
   },
-
   components: {
-    MyNotes,
+    // MyNotes,
+    BlockContentOne,
+    BlockContentTwo,
+    BlockContentThree,
+  },
+  provide() {
+    return {
+      info: this.notes,
+    };
   },
 };
 </script>

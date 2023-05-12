@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import MyThird from "./MyThird.vue";
+import MyThird from "../MyThird.vue";
 export default {
   data() {
     return {
