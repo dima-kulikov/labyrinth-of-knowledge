@@ -24,6 +24,9 @@
   <br />
   <hr />
   <formBlock />
+  <hr />
+  <my-counter></my-counter>
+  <button @click="plusCount2">minus click</button>
 </template>
 
 <script>
@@ -31,6 +34,7 @@ import BlockContentOne from "./components/BlockContentOne.vue";
 import BlockContentThree from "./components/BlockContentThree.vue";
 import BlockContentTwo from "./components/BlockContentTwo.vue";
 import formBlock from "./components/formBlock.vue";
+import MyCounter from "./components/MyCounter.vue";
 // import MyNotes from "./assets/MyNotes.vue";
 
 export default {
@@ -69,6 +73,9 @@ export default {
       const myTarget = e.target.innerHTML;
       this.nameComponent = myTarget;
     },
+    plusCount2() {
+      this.$store.state.count -= 1;
+    },
   },
   components: {
     // MyNotes,
@@ -76,6 +83,7 @@ export default {
     BlockContentTwo,
     BlockContentThree,
     formBlock,
+    MyCounter,
   },
   provide() {
     return {
